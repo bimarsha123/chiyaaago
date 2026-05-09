@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ SITE_NAME }} - They Stood. We Remember.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-bg" style="background-image: url('{% static 'images/chiya-hero.png' %}')"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-glow-3"></div>
+
+    <div class="hero-content">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-sm text-ember-primary/90 text-sm font-medium mb-6 sm:mb-8 ring-1 ring-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                <span>September 8 — 9</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[1.1] tracking-tight">
+                They Stood.<br>
+                <span class="text-gradient-ember">We Remember.</span>
+            </h1>
+
+            <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-secondary max-w-2xl mx-auto leading-relaxed">
+                For the youth who filled the streets of Nepal on September 8.
+                For the lives consumed by fire on September 9.
+                Their names are not forgotten.
+            </p>
+
+            <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center">
+                <a href="{% url 'memorial:martyrs_list' %}" class="btn-ember text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7">
+                    Honour the Fallen
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="{% url 'memorial:voices' %}" class="btn-outline text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7">
+                    Read Their Stories
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 sm:py-28 lg:py-32 bg-surface-low overflow-hidden">
+
+    <div class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-red-600/5 blur-3xl"></div>
+
+    <div class="container relative">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden ring-1 ring-white/5">
+                    <img src="{% static 'images/chiya-tea-collection.png' %}" alt="September memorial" class="w-full h-[350px] sm:h-[450px] lg:h-[500px] object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base/80 via-base/30 to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-surface-mid rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 ring-1 ring-white/5">
+                    <div class="flex items-center gap-3 sm:gap-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-ember-container to-red-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-display font-bold text-ember-primary">{{ total_martyrs }}</p>
+                            <p class="text-xs sm:text-sm text-tertiary">Lives Lost</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="badge badge-container mb-4">What Happened</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
+                    The Fire That <span class="text-gradient-ember">Changed Nepal</span>
+                </h2>
+                <div class="space-y-3 sm:space-y-4 mt-4">
+                    <p class="text-secondary leading-relaxed text-sm sm:text-base lg:text-lg">
+                        On September 8, the youth of Nepal — Generation Z — took to the streets.
+                        They came with nothing but their voices and their conviction that the
+                        country deserved better. Students, workers, ordinary citizens united
+                        by a shared demand for accountability.
+                    </p>
+                    <p class="text-secondary leading-relaxed text-sm sm:text-base lg:text-lg">
+                        By September 9, fire had consumed what the protest had built. Flames
+                        tore through neighborhoods, lives were lost in the chaos, and a nation
+                        watched in horror as the very people who stood for change became its
+                        casualties. The embers of September still burn in our memory.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-6 sm:gap-8 pt-2 sm:pt-4">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-display font-bold text-ember-secondary">September 8</p>
+                        <p class="text-xs sm:text-sm text-tertiary mt-1">The Protest</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-display font-bold text-ember-secondary">September 9</p>
+                        <p class="text-xs sm:text-sm text-tertiary mt-1">The Fire</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-display font-bold text-ember-secondary">Forever</p>
+                        <p class="text-xs sm:text-sm text-tertiary mt-1">Remembered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Martyrs Section -->
+<section id="martyrs" class="py-20 sm:py-28 lg:py-32 bg-base overflow-hidden">
+    <div class="section-divider"></div>
+
+    <div class="container">
+        <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+            <span class="badge badge-ember mb-4">The Fallen</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                Their Names, <span class="text-gradient-ember">Our Duty</span>
+            </h2>
+            <p class="mt-4 sm:mt-6 text-tertiary max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+                Each life lost was a world of dreams, a family shattered, a future stolen.
+                We carry their names so they are never reduced to statistics.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+            {% for martyr in featured_martyrs %}
+            <div class="card group">
+                {% if martyr.image %}
+                <div class="h-32 bg-cover bg-center" style="background-image: url('{{ martyr.image.url }}')"></div>
+                {% else %}
+                <div class="h-1 bg-gradient-to-r {% if martyr.date == 'sept_8' %}from-ember-primary to-ember-container{% else %}from-red-500 to-amber-500{% endif %} transition-all duration-500 group-hover:h-1.5"></div>
+                {% endif %}
+
+                <div class="p-5 sm:p-6 space-y-3 sm:space-y-4">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <span class="badge {% if martyr.date == 'sept_8' %}badge-ember{% else %}badge-container{% endif %} text-[10px] sm:text-xs mb-2 sm:mb-3">
+                                {% if martyr.date == 'sept_8' %}Sept 8{% else %}Sept 9{% endif %}
+                            </span>
+                            <a href="{{ martyr.get_absolute_url }}">
+                                <h3 class="text-lg sm:text-xl font-display font-bold text-white group-hover:text-ember-primary transition-colors duration-300">
+                                    {{ martyr.name }}
+                                </h3>
+                            </a>
+                            <p class="text-xs sm:text-sm text-tertiary flex items-center gap-1 mt-0.5 sm:mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                {{ martyr.location }}
+                            </p>
+                        </div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-ember-bright/50 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary/60"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                        </div>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-white/40 leading-relaxed line-clamp-3">
+                        {{ martyr.description }}
+                    </p>
+
+                    <div class="flex items-center justify-between pt-2 sm:pt-3 ring-1 ring-white/5 rounded-b-xl">
+                        <span class="text-sm font-display text-white/50">
+                            Age {{ martyr.age|default:"—" }}
+                        </span>
+                        <span class="text-xs text-tertiary flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary fill-ember-primary/50"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            Remembered
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="lg:col-span-4 text-center text-secondary">
+                <p>No martyrs have been added yet. Check back soon.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'memorial:martyrs_list' %}" class="btn-outline">
+                View All Martyrs
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section id="timeline" class="py-20 sm:py-28 lg:py-32 bg-surface-low overflow-hidden">
+    <div class="section-divider"></div>
+
+    <div class="container">
+        <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+            <span class="badge badge-secondary mb-4">The Sequence</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                How It <span class="text-gradient-glow">Unfolded</span>
+            </h2>
+            <p class="mt-4 sm:mt-6 text-tertiary max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+                Two days that reshaped a generation. Every moment, a turning point.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <!-- September 8 -->
+            <div class="card">
+                <div class="h-1 bg-gradient-to-r from-ember-primary to-ember-container"></div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-ember-primary/10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">September 8</h3>
+                            <p class="text-sm text-ember-primary/60">The Protest</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        {% for event in sept8_events %}
+                        <div class="timeline-item">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot"></div>
+                                {% if not forloop.last %}<div class="timeline-line"></div>{% endif %}
+                            </div>
+                            <div class="pb-6">
+                                <span class="text-xs text-ember-primary/60 uppercase tracking-wider">{{ event.time_of_day }}</span>
+                                <p class="text-secondary mt-1 text-sm sm:text-base">{{ event.event }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-tertiary text-sm">Events for September 8 will appear here.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- September 9 -->
+            <div class="card">
+                <div class="h-1 bg-gradient-to-r from-red-500 to-amber-600"></div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">September 9</h3>
+                            <p class="text-sm text-red-400/60">The Fire</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        {% for event in sept9_events %}
+                        <div class="timeline-item">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot" style="background: #f87171; box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.2);"></div>
+                                {% if not forloop.last %}<div class="timeline-line" style="background: rgba(248, 113, 113, 0.2);"></div>{% endif %}
+                            </div>
+                            <div class="pb-6">
+                                <span class="text-xs text-red-400/60 uppercase tracking-wider">{{ event.time_of_day }}</span>
+                                <p class="text-secondary mt-1 text-sm sm:text-base">{{ event.event }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-tertiary text-sm">Events for September 9 will appear here.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Remembrance Section -->
+<section id="remembrance" class="py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <div class="absolute bottom-1/3 right-1/3 w-80 h-80 rounded-full bg-ember-primary/5 blur-[80px]"></div>
+
+    <div class="container relative">
+        <div class="text-center mb-12 sm:mb-16">
+            <span class="badge badge-ember mb-4">Our Promise</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                We <span class="text-gradient-glow">Carry Forward</span>
+            </h2>
+            <p class="mt-4 sm:mt-6 text-tertiary max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+                Remembering is not enough. Their sacrifice demands that we act.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+            {% for pillar in pillars %}
+            <div class="card group">
+                <div class="p-6 sm:p-8 lg:p-10 text-center space-y-4 sm:space-y-5">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-ember-primary/10 to-ember-container/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-all duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary">
+                            {% if pillar.icon == "Megaphone" %}
+                            <path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                            {% elif pillar.icon == "Shield" %}
+                            <path d="M20 13c0 5-3.5 7.5-7.66 8.93a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                            {% elif pillar.icon == "HandHeart" %}
+                            <path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6H16"/><path d="M11 14v4c0 .6-.2 1-.4 1.4M17.6 19.4c.3-.4.4-.8.4-1.4V14"/><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                            {% else %}
+                            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                            {% endif %}
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-white group-hover:text-ember-primary transition-colors duration-300">
+                        {{ pillar.title }}
+                    </h3>
+                    <p class="text-sm sm:text-base text-white/40 leading-relaxed">
+                        {{ pillar.description }}
+                    </p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="md:col-span-3 text-center text-secondary">
+                <p>Pillars of remembrance will appear here.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Voices Section -->
+<section id="voices" class="py-20 sm:py-28 lg:py-32 bg-base overflow-hidden">
+    <div class="section-divider"></div>
+
+    <div class="container">
+        <div class="text-center mb-12 sm:mb-16">
+            <span class="badge badge-ember mb-4">Witness Accounts</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                Voices of <span class="text-gradient-glow">September</span>
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+            {% for account in featured_accounts %}
+            <div class="card group">
+                <div class="p-6 sm:p-8 space-y-4 sm:space-y-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary/20 group-hover:text-ember-primary/40 transition-colors duration-500"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+
+                    <p class="text-sm sm:text-base text-secondary leading-relaxed italic">
+                        "{{ account.testimonial }}"
+                    </p>
+
+                    <div class="flex items-center gap-3 sm:gap-4 pt-3 ring-1 ring-white/5 rounded-b-xl">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-ember-primary to-ember-container flex items-center justify-center text-base font-semibold text-base flex-shrink-0">
+                            {{ account.avatar_initials }}
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white text-sm sm:text-base">{{ account.name }}</p>
+                            <p class="text-xs sm:text-sm text-tertiary">{{ account.role }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="md:col-span-3 text-center text-secondary">
+                <p>Witness accounts will appear here.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'memorial:voices' %}" class="btn-outline">
+                Read More Stories
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 sm:py-28 lg:py-32 bg-surface-low overflow-hidden">
+    <div class="section-divider"></div>
+
+    <div class="container">
+        <div class="relative rounded-3xl overflow-hidden">
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{% static 'images/chiya-hero.png' %}')"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-base/95 via-base/85 to-base/80"></div>
+            </div>
+
+            <div class="absolute inset-0">
+                <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-ember-container/10 blur-[100px]"></div>
+                <div class="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-ember-primary/5 blur-[80px]"></div>
+            </div>
+
+            <div class="relative z-10 py-12 sm:py-16 lg:py-20 px-6 sm:px-8 lg:px-16 max-w-2xl">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
+                    The Fire Still <span class="text-gradient-glow">Burns</span>
+                </h2>
+                <p class="mt-4 sm:mt-6 text-base sm:text-lg text-secondary leading-relaxed">
+                    Not in destruction — in resolve. Every candle lit, every name spoken,
+                    every act of defiance keeps their memory alive. Stand with us.
+                </p>
+                <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <a href="{% url 'memorial:contact' %}" class="btn-ember text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7">
+                        Honour Their Memory
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="{% url 'memorial:contact' %}" class="btn-outline text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7">
+                        Share Their Story
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

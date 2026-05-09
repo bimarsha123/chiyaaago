@@ -1,0 +1,1 @@
+from chiya_aago.wsgi import application

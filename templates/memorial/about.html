@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About - {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-20 sm:py-28 lg:py-32 bg-surface-low">
+    <div class="container max-w-4xl">
+        <span class="badge badge-container mb-6">About the Memorial</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
+            Remembering <span class="text-gradient-ember">September</span>
+        </h1>
+
+        <div class="mt-8 space-y-6 text-secondary leading-relaxed text-base sm:text-lg">
+            <p>
+                On September 8, 2024, the youth of Nepal — Generation Z — took to the streets.
+                They came with nothing but their voices and their conviction that the country
+                deserved better. Students, workers, ordinary citizens united by a shared demand
+                for accountability.
+            </p>
+            <p>
+                By September 9, fire had consumed what the protest had built. Flames tore through
+                neighborhoods, lives were lost in the chaos, and a nation watched in horror as the
+                very people who stood for change became its casualties. The embers of September
+                still burn in our memory.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-8 pt-8 mt-8 border-t border-white/5">
+            <div class="text-center">
+                <p class="text-3xl font-display font-bold text-ember-secondary">September 8</p>
+                <p class="text-sm text-tertiary mt-1">The Protest</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-display font-bold text-ember-secondary">September 9</p>
+                <p class="text-sm text-tertiary mt-1">The Fire</p>
+            </div>
+            <div class="text-center">
+                <p class="text-3xl font-display font-bold text-ember-secondary">{{ total_martyrs }}</p>
+                <p class="text-sm text-tertiary mt-1">Lives Lost</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

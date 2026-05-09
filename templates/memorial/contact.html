@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us - {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-20 sm:py-28 lg:py-32 bg-surface-low">
+    <div class="container max-w-2xl">
+        <div class="text-center mb-12">
+            <span class="badge badge-ember mb-4">Reach Out</span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                Contact <span class="text-gradient-ember">Us</span>
+            </h1>
+            <p class="mt-4 text-tertiary">
+                Share a story, ask a question, or simply stand with us.
+            </p>
+        </div>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            <div>
+                <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                <p class="text-red-400 text-sm mt-1">{{ form.name.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                <p class="text-red-400 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.subject.id_for_label }}" class="form-label">{{ form.subject.label }}</label>
+                {{ form.subject }}
+                {% if form.subject.errors %}
+                <p class="text-red-400 text-sm mt-1">{{ form.subject.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.message.id_for_label }}" class="form-label">{{ form.message.label }}</label>
+                {{ form.message }}
+                {% if form.message.errors %}
+                <p class="text-red-400 text-sm mt-1">{{ form.message.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn-ember w-full">
+                Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

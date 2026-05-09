@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gallery - {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-20 sm:py-28 lg:py-32 bg-surface-low">
+    <div class="container">
+        <div class="text-center mb-12">
+            <span class="badge badge-ember mb-4">Photo Gallery</span>
+            <h1 class="text-3xl sm:text-4xl font-display font-bold text-white">
+                Remembering <span class="text-gradient-ember">Through Images</span>
+            </h1>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for image in images %}
+            <div class="card group overflow-hidden">
+                <img src="{{ image.image.url }}" alt="{{ image.title|default:image.caption }}" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                {% if image.title or image.caption %}
+                <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-base to-transparent">
+                    <p class="text-sm text-white">{{ image.title|default:image.caption|truncatewords:10 }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center text-secondary py-12">
+                <p>Gallery images will appear here.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+        <nav class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <span class="current">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </nav>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

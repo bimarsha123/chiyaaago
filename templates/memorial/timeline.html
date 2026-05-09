@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Timeline - {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-20 sm:py-28 lg:py-32 bg-base">
+    <div class="container">
+        <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+            <span class="badge badge-secondary mb-4">The Sequence</span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white">
+                How It <span class="text-gradient-glow">Unfolded</span>
+            </h1>
+            <p class="mt-4 sm:mt-6 text-tertiary max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
+                Two days that reshaped a generation. Every moment, a turning point.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <!-- September 8 -->
+            <div class="card">
+                <div class="h-1 bg-gradient-to-r from-ember-primary to-ember-container"></div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-ember-primary/10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">September 8</h2>
+                            <p class="text-sm text-ember-primary/60">The Protest</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        {% for event in sept8_events %}
+                        <div class="timeline-item">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot"></div>
+                                {% if not forloop.last %}<div class="timeline-line"></div>{% endif %}
+                            </div>
+                            <div class="pb-6">
+                                <span class="text-xs text-ember-primary/60 uppercase tracking-wider">{{ event.time_of_day }}</span>
+                                <p class="text-secondary mt-1 text-sm sm:text-base">{{ event.event }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-tertiary text-sm">Events will appear here.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- September 9 -->
+            <div class="card">
+                <div class="h-1 bg-gradient-to-r from-red-500 to-amber-600"></div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">September 9</h2>
+                            <p class="text-sm text-red-400/60">The Fire</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        {% for event in sept9_events %}
+                        <div class="timeline-item">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot" style="background: #f87171; box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.2);"></div>
+                                {% if not forloop.last %}<div class="timeline-line" style="background: rgba(248, 113, 113, 0.2);"></div>{% endif %}
+                            </div>
+                            <div class="pb-6">
+                                <span class="text-xs text-red-400/60 uppercase tracking-wider">{{ event.time_of_day }}</span>
+                                <p class="text-secondary mt-1 text-sm sm:text-base">{{ event.event }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-tertiary text-sm">Events will appear here.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

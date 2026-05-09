@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search - {{ SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-20 sm:py-28 lg:py-32 bg-base">
+    <div class="container">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl sm:text-4xl font-display font-bold text-white">Search</h1>
+
+            <form id="search-form" method="get" class="search-form mt-8">
+                <input type="text" name="q" value="{{ query }}" placeholder="Search martyrs, stories, news..." class="search-input flex-1">
+                <button type="submit" class="btn-ember px-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
+            </form>
+        </div>
+
+        {% if query %}
+        <div class="mb-8 text-center">
+            <p class="text-secondary">
+                {% if martyrs_count or accounts_count or news_count %}
+                Showing results for "<span class="text-ember-primary">{{ query }}</span>"
+                ({{ martyrs_count }} martyrs, {{ accounts_count }} accounts, {{ news_count }} news)
+                {% else %}
+                No results found for "<span class="text-ember-primary">{{ query }}</span>"
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            {% for result in results %}
+            <a href="{{ result.get_absolute_url }}" class="card group p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="flex-1">
+                    <h3 class="text-xl font-display font-bold text-white group-hover:text-ember-primary transition-colors">
+                        {{ result.name }}
+                    </h3>
+                    <p class="text-sm text-tertiary mt-1">{{ result.location }}</p>
+                    <p class="text-sm text-secondary mt-2 line-clamp-2">{{ result.description }}</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-tertiary group-hover:text-ember-primary transition-colors flex-shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            {% empty %}
+            {% if query %}
+            <div class="text-center text-secondary py-12">
+                <p>No martyrs found matching your search.</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+        <nav class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ query }}">Previous</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ query }}">Next</a>
+            {% endif %}
+        </nav>
+        {% endif %}
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
