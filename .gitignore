@@ -1,0 +1,68 @@
+# ===============================
+# 1. Environment & settings files
+# ===============================
+# Ignore .env files (common for environment variables)
+.env
+.env.*
+!.env.example          # optionally keep an example template
+
+# Ignore local settings overrides (classic Django pattern)
+settings.py
+*_local.py
+
+# Ignore any settings file that is explicitly meant for a specific environment
+# (if you use settings/development.py & settings/production.py, track only the base ones)
+# settings/local.py
+# settings/dev_local.py
+
+# ===============================
+# 2. Python & Django cache files
+# ===============================
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# Database (development SQLite – ignore it; production should use a separate DB)
+db.sqlite3
+db.sqlite3-*
+
+# ===============================
+# 3. Virtual environment
+# ===============================
+venv/
+env/
+ENV/
+.env/
+.venv
+
+# ===============================
+# 4. IDE / editor files
+# ===============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===============================
+# 5. Static / media files (usually served differently in production)
+# ===============================
+staticfiles/
+static_collected/
+media/
+*.log
+
+# ===============================
+# 6. Secret & key files
+# ===============================
+*.pem
+*.key
+*.crt
+.secret_key
+
+# ===============================
+# 7. OS metadata
+# ===============================
+.DS_Store
+Thumbs.db
