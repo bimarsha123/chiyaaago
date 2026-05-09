@@ -9,7 +9,7 @@
 # Ignore local settings overrides (classic Django pattern)
 settings.py
 *_local.py
-
+chiya_aago/settings.py
 
 # Ignore any settings file that is explicitly meant for a specific environment
 # (if you use settings/development.py & settings/production.py, track only the base ones)
