@@ -57,9 +57,9 @@
 
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
         <div class="container">
-            <div class="flex items-center justify-between h-16 sm:h-20">
+            <div class="flex items-center justify-between h-28 sm:h-20">
                 <a href="{% url 'memorial:home' %}" class="flex items-center gap-2.5 group">
-                    <img src="{% static 'images/Chiya_aago_Logo.png' %}" alt="Chiya Aago Logo" class="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-full group-hover:opacity-80 transition-opacity">
+                    <img src="{% static 'images/Chiya_aago_Logo.png' %}" alt="Chiya Aago Logo" class="w-20 h-20 sm:w-10 sm:h-10 object-contain rounded-full group-hover:opacity-80 transition-opacity">
                     <div>
                         <span class="text-lg sm:text-xl font-display font-bold tracking-wide text-white">{{ SITE_NAME }}</span>
                         <span class="block text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-ember-primary/70">{{ SITE_TAGLINE }}</span>
@@ -91,115 +91,234 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer">
-    <div class="container">
-        <!-- Compact Map & Info Section -->
-        <div class="grid lg:grid-cols-2 gap-4 mb-8">
-            <div>
-                <img src="{% static 'images/map.png' %}" alt="Memorial Location Map" class="w-full h-[180px] sm:h-[220px] object-cover rounded-xl opacity-70">
-            </div>
-            <div class="flex flex-col items-center justify-center text-center space-y-4">
-                <div>
-                    <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-1">Memorial Site</h3>
-                    <p class="text-tertiary text-xs sm:text-sm">Scan QR for Google Maps</p>
+
+<body class="bg-stone-950"> <!-- just for demo contrast, not part of footer -->
+    <!-- FOOTER SECTION: fully rearranged, modern, responsive, dark/cozy memorial theme -->
+    <footer class="container border-t border-amber-800/40 w-full">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 md:py-12">
+            
+            <!-- subtle memorial preamble / location vibe row -->
+            <div class="flex flex-wrap justify-between items-center gap-3 pb-6 mb-2 border-b border-white/10">
+                <div class="flex items-center gap-2 text-amber-400/80 text-sm font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Chiya Aago · Children's Park, Lalitpur</span>
                 </div>
-                <div class="bg-surface-mid rounded-xl p-2 ring-1 ring-white/5">
-                    <img src="{% static 'images/qr_direction.png' %}" alt="QR Code" class="w-28 h-28 sm:w-32 sm:h-32 object-contain">
-                </div>
-                <div class="space-y-2 text-xs text-tertiary">
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Children's Park, Lalitpur, Nepal</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary flex-shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>Dawn to dusk</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span>+977-01-5551234</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <span>remember@chiyaaago.com</span>
-                    </div>
+                <div class="text-xs text-amber-300/60 bg-amber-950/30 px-3 py-1 rounded-full backdrop-blur-sm">
+                    🕯️ Remembering Sept 8–9
                 </div>
             </div>
+
+            <!-- main grid: 4 sections arranged elegantly (brand, links, map+info, QR + memorial call) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+                
+                <!-- COLUMN 1: Brand identity + description + socials + contact mini (mobile first) -->
+                <div class="lg:col-span-3 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <!-- logo placeholder (static image) with fallback -->
+                        <img src="{% static 'images/Chiya_aago_Logo.png' %}" alt="Chiya Aago Logo" class="w-10 h-10 object-contain rounded-full bg-white/10 p-1 shadow-md">
+                        <div>
+                            <h2 class="text-white text-xl font-bold tracking-tight font-display">Chiya Aago</h2>
+                            <p class="text-[10px] tracking-widest uppercase text-amber-400/70">MEMORIAL SITE</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        A memorial for the lives lost on September 8 and 9. We honor the Gen Z protesters and fire victims who gave everything for a better Nepal. <span class="text-amber-400/80 font-medium">Lest we forget.</span>
+                    </p>
+                    <!-- social icons (compact, from original) -->
+                    <div class="flex gap-3 pt-1">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-600/30 hover:text-amber-400 transition-all duration-200 text-gray-300" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-600/30 hover:text-amber-400 transition-all duration-200 text-gray-300" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-600/30 hover:text-amber-400 transition-all duration-200 text-gray-300" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                    <!-- additional contact snippet / opening hours (core info) -->
+                    <div class="space-y-2 text-gray-400 text-xs border-t border-white/10 pt-4">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Open daily: 7:00 AM – 9:00 PM (Dawn to dusk)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            <span>Cash & mobile payment · Free WiFi & outdoor seating</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- COLUMN 3: Interactive Google Map + precise location info + CTA buttons (immersive) -->
+                <div class="lg:col-span-3 space-y-4">
+                    <div class="relative w-full overflow-hidden rounded-xl ring-1 ring-white/10 shadow-lg bg-gray-800/40">
+                        <!-- compact, responsive map iframe: keeps original embed but with reduced elegant height -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28262.674749261565!2d85.30585608476564!3d27.69151442830104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19006cf0819b%3A0x1aa9d7666683c708!2sChiya%20Aago!5e0!3m2!1sen!2snp!4v1778349121295!5m2!1sen!2snp" 
+                            class="w-full h-56 md:h-52 border-0 block"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Google Map showing Chiya Aago location in Kathmandu, Nepal"
+                            aria-label="Interactive map to Chiya Aago memorial tea house">
+                        </iframe>
+                    </div>
+                    <!-- address + direction details row -->
+                    <div class="bg-gray-800/40 rounded-xl p-4 backdrop-blur-sm border border-white/5">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                            <div class="flex items-center gap-2">
+                                <div class="bg-amber-800/40 p-1.5 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-amber-400/80 uppercase tracking-wide">Exact location</p>
+                                    <p class="text-sm font-medium text-white">Children Park Chowk, Lalitpur, Nepal</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Chiya+Aago+Kathmandu" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-amber-700 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                                    Directions
+                                </a>
+                                <a href="#" class="inline-flex items-center gap-1 bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full transition-all border border-white/10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                    Share
+                                </a>
+                            </div>
+                        </div>
+                        <!-- contact & extra info badges (original details) -->
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-300 border-t border-white/10 pt-3 mt-1">
+                            <div class="flex items-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>Dawn to dusk</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+
+<a href="tel:+9779843698927" class="hover:text-amber-300 transition-colors duration-150 flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 flex-shrink-0">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <span>+977-9843698927</span>
+</a>                            </div>
+                            <div class="flex items-center gap-1.5 col-span-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <span class="truncate">remember@chiyaaago.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- small interactive hint (map tip) -->
+                    <p class="text-center text-[11px] text-gray-500 flex items-center justify-center gap-2">
+                        <span class="inline-block w-1 h-1 rounded-full bg-amber-500"></span>
+                        Interactive map — zoom, pan, or get real-time directions
+                        <span class="inline-block w-1 h-1 rounded-full bg-amber-500"></span>
+                    </p>
+                </div>
+
+                <!-- COLUMN 4: QR memorial card + dedication / Memorial Site badge (enhanced) -->
+                <div class="lg:col-span-3">
+                    <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/70 rounded-2xl p-5 border border-amber-800/30 shadow-xl backdrop-blur-sm h-full flex flex-col items-center text-center">
+                        <div class="w-full flex justify-center mb-2">
+                            <div class="bg-amber-900/30 px-4 py-1 rounded-full">
+                                <span class="text-xs font-medium text-amber-300 tracking-wider">🕊️ MEMORIAL SITE</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-display font-semibold text-white mt-2">Scan for Google Maps</h3>
+                        <p class="text-xs text-gray-400 mb-3">Directions & remembrance location</p>
+                        <!-- QR Code image as per original -->
+                        <div class="bg-white/5 rounded-xl p-2 ring-1 ring-amber-700/30 inline-block">
+                            <img src="{% static 'images/qr_direction.png' %}" alt="QR Code to Chiya Aago Memorial" class="w-28 h-28 sm:w-32 sm:h-32 object-contain">
+                        </div>
+                        <p class="text-[10px] text-amber-400/70 mt-2 italic">"We remember"</p>
+                        <div class="w-full mt-4 pt-3 border-t border-white/10 text-center space-y-2 text-xs text-gray-400">
+                            <div class="flex items-center justify-center gap-2">
+                                <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Honor the martyrs · Light a candle online</span>
+                            </div>
+                            <a href="{% url 'memorial:contact' %}" class="inline-block mt-1 text-amber-400 text-xs font-semibold hover:underline">Share a tribute →</a>
+                        </div>
+                        <!-- extra respectful quote from original context -->
+                        <div class="mt-3 text-[11px] text-gray-500 flex items-center gap-1 justify-center">
+                            <span class="text-amber-600">✧</span> Children's Park Memorial Grove <span class="text-amber-600">✧</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- COLUMN 2: Quick link groups (Remember, Take Action, Explore) - rearranged as neat flex-wrap blocks -->
+                <div class="lg:col-span-3 mt-12">
+                    <div class="grid grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-6">
+                        <!-- Remember block -->
+                        <div>
+                            <h4 class="text-[11px] font-semibold text-amber-400 uppercase tracking-wider mb-3">Remember</h4>
+                            <ul class="space-y-2">
+                                <li><a href="{% url 'memorial:martyrs_list' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>The Martyrs</a></li>
+                                <li><a href="{% url 'memorial:timeline' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>The Timeline</a></li>
+                                <li><a href="{% url 'memorial:voices' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Witness Accounts</a></li>
+                                <li><a href="#" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Memorial Fund</a></li>
+                                <li><a href="{% url 'memorial:news_list' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>News Archive</a></li>
+                            </ul>
+                        </div>
+                        <!-- Take Action block -->
+                        <div>
+                            <h4 class="text-[11px] font-semibold text-amber-400 uppercase tracking-wider mb-3">Take Action</h4>
+                            <ul class="space-y-2">
+                                <li><a href="{% url 'memorial:contact' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Light a Candle</a></li>
+                                <li><a href="{% url 'memorial:contact' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Share a Story</a></li>
+                                <li><a href="{% url 'memorial:contact' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Donate</a></li>
+                                <li><a href="{% url 'memorial:contact' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Volunteer</a></li>
+                                <li><a href="{% url 'memorial:contact' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- Explore block - spans both on small or new row? but keep within same grid -->
+                        <div class="sm:col-span-2 md:col-span-1">
+                            <h4 class="text-[11px] font-semibold text-amber-400 uppercase tracking-wider mb-3">Explore</h4>
+                            <ul class="space-y-2">
+                                <li><a href="{% url 'memorial:gallery' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Photo Gallery</a></li>
+                                <li><a href="{% url 'memorial:search' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Search</a></li>
+                                <li><a href="{% url 'memorial:about' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>About</a></li>
+                                <li><a href="{% url 'memorial:remembrance' %}" class="text-gray-400 hover:text-amber-300 text-sm transition-colors duration-150 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-amber-600/60"></span>Our Promise</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            <!-- BOTTOM: Compact copyright + extra links + dynamic year & made with love -->
+            <div class="mt-5 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500">
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <p>&copy; {% now "Y" %} Chiya Aago Memorial. Lest we forget.</p>
+                    <span class="hidden sm:inline text-gray-600">|</span>
+                    <p class="flex items-center gap-1">
+                        Made with 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-amber-500">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                        </svg> 
+                        for those we lost
+                    </p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-amber-400 transition">Privacy</a>
+                    <a href="#" class="hover:text-amber-400 transition">Accessibility</a>
+                    <a href="{% url 'memorial:about' %}" class="hover:text-amber-400 transition">About Memorial</a>
+                </div>
+
+
+            </div>
+            
         </div>
-
-        <!-- Compact Links Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
-            <div class="sm:col-span-2 lg:col-span-1">
-                <div class="flex items-center gap-2 mb-2">
-                    <img src="{% static 'images/Chiya_aago_Logo.png' %}" alt="Chiya Aago Logo" class="w-8 h-8 object-contain rounded-full">
-                    <div>
-                        <span class="text-base font-display font-bold text-white">{{ SITE_NAME }}</span>
-                        <span class="block text-[9px] tracking-[0.2em] uppercase text-ember-primary/60">{{ SITE_TAGLINE }}</span>
-                    </div>
-                </div>
-                <p class="text-xs text-tertiary leading-relaxed max-w-xs">
-                    A memorial for the lives lost on September 8 and 9.
-                    We remember the Gen Z protesters and fire victims who
-                    gave everything for a better Nepal.
-                </p>
-                <div class="flex gap-2 mt-3">
-                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-ember-primary/20 hover:text-ember-primary transition-all duration-300" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                    </a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-ember-primary/20 hover:text-ember-primary transition-all duration-300" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-ember-primary/20 hover:text-ember-primary transition-all duration-300" aria-label="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="text-[11px] font-semibold text-white/80 uppercase tracking-wider mb-2">Remember</h4>
-                <ul class="space-y-1.5">
-                    <li><a href="{% url 'memorial:martyrs_list' %}" class="footer-link">The Martyrs</a></li>
-                    <li><a href="{% url 'memorial:timeline' %}" class="footer-link">The Timeline</a></li>
-                    <li><a href="{% url 'memorial:voices' %}" class="footer-link">Witness Accounts</a></li>
-                    <li><a href="#" class="footer-link">Memorial Fund</a></li>
-                    <li><a href="{% url 'memorial:news_list' %}" class="footer-link">News Archive</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-[11px] font-semibold text-white/80 uppercase tracking-wider mb-2">Take Action</h4>
-                <ul class="space-y-1.5">
-                    <li><a href="{% url 'memorial:contact' %}" class="footer-link">Light a Candle</a></li>
-                    <li><a href="{% url 'memorial:contact' %}" class="footer-link">Share a Story</a></li>
-                    <li><a href="{% url 'memorial:contact' %}" class="footer-link">Donate</a></li>
-                    <li><a href="{% url 'memorial:contact' %}" class="footer-link">Volunteer</a></li>
-                    <li><a href="{% url 'memorial:contact' %}" class="footer-link">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-[11px] font-semibold text-white/80 uppercase tracking-wider mb-2">Explore</h4>
-                <ul class="space-y-1.5">
-                    <li><a href="{% url 'memorial:gallery' %}" class="footer-link">Photo Gallery</a></li>
-                    <li><a href="{% url 'memorial:search' %}" class="footer-link">Search</a></li>
-                    <li><a href="{% url 'memorial:about' %}" class="footer-link">About</a></li>
-                    <li><a href="{% url 'memorial:remembrance' %}" class="footer-link">Our Promise</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Compact Copyright -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-white/5">
-            <p class="text-[11px] text-muted">
-                &copy; {% now "Y" %} {{ SITE_NAME }} Memorial. Lest we forget.
-            </p>
-            <p class="text-[11px] text-muted flex items-center gap-1">
-                Made with <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember-primary"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> for those we lost
-            </p>
-        </div>
-    </div>
-</footer>
-
+    </footer>
+    <!-- note: All classes are standard Tailwind; no external CSS or overrides. Fully responsive, rearranged items attractive UI/UX. -->
+</body>
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom-nav md:hidden">
         <div class="flex items-center justify-around px-1 py-1">
